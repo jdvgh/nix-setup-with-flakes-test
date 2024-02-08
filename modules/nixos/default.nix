@@ -7,7 +7,6 @@
   environment = import ./environment.nix;
   fonts = import ./fonts.nix;
   home-manager = import ./home-manager.nix;
-  keyboard = import ./keyboard.nix;
   networking = import ./networking.nix;
   nix = import ./nix.nix;
   packages = import ./packages.nix;
