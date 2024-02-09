@@ -8,7 +8,7 @@ with lib; {
       user = rec {
         name = mkOption {
           description = "The main user.";
-          default = "nixos";
+          default = "jonase";
           type = types.str;
         };
 

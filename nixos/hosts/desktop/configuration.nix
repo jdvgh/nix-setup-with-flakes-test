@@ -21,7 +21,7 @@ in {
     # outputs.nixosModules.example
 
     # Or modules from other flakes (such as nixos-hardware):
-    inputs.hardwarejvdgh.nixosModules.lenovo-legion-16ach6h
+    inputs.hardwarejdvgh.nixosModules.lenovo-legion-16ach6h
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -34,7 +34,6 @@ in {
     # Include all other specifications.
     (outputs.nixosModules.windowing {inherit inputs config pkgs pkgsStable;})
     outputs.nixosModules.display
-    outputs.nixosModules.keyboard
     outputs.nixosModules.fonts
     outputs.nixosModules.time
     outputs.nixosModules.environment
