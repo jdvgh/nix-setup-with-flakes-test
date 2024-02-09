@@ -21,9 +21,7 @@ in {
     # outputs.nixosModules.example
 
     # Or modules from other flakes (such as nixos-hardware):
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardwarejvdgh.nixosModules.lenovo-legion-16ach6h
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -34,7 +32,7 @@ in {
     ./hardware.nix
 
     # Include all other specifications.
-    (outputs.nixosModules.windowing {inherit config pkgs pkgsStable;})
+    (outputs.nixosModules.windowing {inherit inputs config pkgs pkgsStable;})
     outputs.nixosModules.display
     outputs.nixosModules.keyboard
     outputs.nixosModules.fonts
