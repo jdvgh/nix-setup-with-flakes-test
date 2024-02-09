@@ -27,11 +27,7 @@
     ./programs.nix
     ./services.nix
     ./xdg.nix
-
-    outputs.homeManagerModules.tmux
-    outputs.homeManagerModules.chezmoi
-    outputs.homeManagerModules.astronvim
-    outputs.homeManagerModules.bazecor
+    # outputs.homeManagerModules.chezmoi
 
     inputs.nix-index-database.hmModules.nix-index
   ];
@@ -49,20 +45,14 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Enable chezmoi and its config files.
-  chezmoi = {
-    enable = true;
-    url = "https://github.com/gabyx/dotfiles.git";
-    ref = "main";
-    workspace = "private";
-  };
+  # # Enable chezmoi and its config files.
+  # chezmoi = {
+  #   enable = true;
+  #   url = "https://github.com/jdvgh/dotfiles.git";
+  #   ref = "main";
+  #   workspace = "private";
+  # };
 
-  # Enable astronmvim setup.
-  astronvim = {
-    enable = true;
-    astroVimUserUrl = "https://github.com/gabyx/astrovim.git";
-    astroVimUserRef = "main";
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.11";

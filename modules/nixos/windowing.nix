@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   pkgsStable,
@@ -6,6 +7,8 @@
 }: {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.xkb.layout = "eu";
+  services.xserver.xkb.variant = "";
   services.xserver.autorun = true;
 
   # Display Manager ===========================================================
@@ -15,55 +18,22 @@
       enable = true;
       wayland = true;
     };
-    autoLogin.enable = false;
+    autoLogin.enable = true;
     autoLogin.user = "nixos";
+    defaultSession = "gnome";
+  };
+  services.xserver.desktopManager = {
+    gnome.enable = true;
   };
   # ===========================================================================
 
-  # Desktop Manager ===========================================================
-  # They interfere with the Window Manager.
-  # services.xserver.desktopManager.xfce.enable = true;
-  # ===========================================================================
 
   # Hyprland Window Manager ===================================================
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true; # Bridge to Wayland API for X11 apps.
-  # };
-  #
-  # hardware = {
-  #   opengl.enable = true;
-  # };
-  #
-  # # Handle desktop interaction.
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  # };
-  #
-  # # Useful packages.
-  # environment.systemPackages = with pkgs; [
-  #   hyprland
-  #
-  #   (
-  #     waybar.overrideAttrs (oldAttrs: {
-  #       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-  #     })
-  #   )
-  #
-  #   dunst # Notification daemon (needs libnotify).
-  #   libnotify
-  #
-  #   swww # Wallpaper daemon for wayland.
-  #
-  #   rofi-wayland # Window switcher.
-  #   networkmanagerapplet # Networkmanager applet.
-  #
-  #   grim # Screenshot in Wayland.
-  #   slurp # Wayland region selector.
-  #   playerctl # Player control in waybar.
-  # ];
-  #
+    programs.hyprland = {
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        xwayland.enable = true; # Bridge to Wayland API for X11 apps.
+    };
   # # Sessions variables
   # environment.sessionVariables = {
   #   # Clutter based apps.
@@ -73,78 +43,16 @@
   #
   #   WLR_NO_HARDWARE_CURSORS = "1";
   #   WLR_RENDERER_ALLOW_SOFTWARE = "1";
-  #   WLR_RENDERER = "vulkan";
+  #   # WLR_RENDERER = "vulkan";
   #
-  #   XDG_CURRENT_DESKTOP = "Hyprland";
-  #   XDG_SESSION_DESKTOP = "Hyprland";
+  #   # XDG_CURRENT_DESKTOP = "Hyprland";
+  #   # XDG_SESSION_DESKTOP = "Hyprland";
   #   XDG_SESSION_TYPE = "wayland";
   # };
   # ===========================================================================
 
-  # Sway Window Manager
-  # ===========================================================================
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true; # so that gtk works properly
-
-    extraPackages = with pkgs; [
-      power-profiles-daemon
-
-      redshift # Redshift monitor colors.
-      swaylock-effects # Swaylock but with more effects.
-      swayidle
-      swaynotificationcenter
-      libnotify
-
-      xdg-utils
-      flashfocus # Flash focus animations in sway.
-      copyq # Clipboard manager.
-      qalculate-gtk # Calculator menu.
-
-      wl-clipboard # Wayland clipboard.
-      wf-recorder # Wayland screen recorder.
-      grim # Screenshot tool in Wayland.
-      slurp # Wayland region selector.
-      sway-contrib.grimshot # Main screenshot tool.
-      swappy # Edit tool for screenshots.
-
-      rofi # Application Launcher for waybar.
-      rofimoji
-      rofi-power-menu
-      rofi-bluetooth
-      rofi-systemd
-      playerctl # Player control in waybar.
-    ];
-
-    extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export MOZ_ENABLE_WAYLAND=1
-      export XDG_SESSION_TYPE=wayland
-      export XDG_CURRENT_DESKTOP=sway
-    '';
-  };
-
-  environment.variables = {
-    XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "sway";
-  };
-  # ===========================================================================
-
-  # To make screencasting work in Chrome and other Apps communicating
-  # over DBus.
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
-
-  security.polkit.enable = true; # https://discourse.nixos.org/t/sway-does-not-start/22354/5
-
+  # security.polkit.enable = true; # https://discourse.nixos.org/t/sway-does-not-start/22354/5
+  #
   programs.waybar.enable = true;
 
   fonts.packages = with pkgs; [

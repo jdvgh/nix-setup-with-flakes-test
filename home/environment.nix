@@ -4,7 +4,7 @@
   ...
 }: {
   home.sessionVariables = {
-    TERMINAL = "wezterm";
+    TERMINAL = "alacritty";
     EDITOR = "nvim";
     BROWSER = "google-chrome-stable";
   };

@@ -6,12 +6,7 @@
   ...
 }: let
   # Define some special packages.
-  wezterm-nightly = inputs.wezterm.packages."${pkgs.system}".default;
 
-  # llvm 16 packages have a problem:
-  # https://github.com/NixOS/nixpkgs/issues/244609
-  llvmPkgs = pkgs.llvmPackages_15;
-  clangTools = pkgs.clang-tools_15;
 in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -26,13 +21,8 @@ in {
 
     gnome.seahorse
 
-    starship
-    kitty
-    wezterm-nightly
-
-    # Editors
-    vscode
-    # neovim configured in `astronvim.nix`
+    alacritty
+    neovim
 
     # Tools
     restic # Backup tool
@@ -50,11 +40,17 @@ in {
 
     # Programming
     (lib.hiPrio parallel)
+    bun
+    delve
+    earthly
+    evans
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    hcloud
     chezmoi
+    terraform
     lazygit
     delta
     kubectl
-    kind # Simple kubernetes for local development.
     k9s # Kubernetes management CLI tool
     kdiff3
     jq
@@ -94,28 +90,16 @@ in {
 
     ## C
     gnumake
-    autoconf
-    libtool
-    pkgconf
+    # autoconf
+    # libtool
+    # pkgconf
 
-    ## C++
-    cmake
-    # cppcheck
-    # gcc13
-    # gdb
-    # llvmPkgs.bintools
-    # llvmPkgs.openmp
-    # # (hiPrio llvmPkgs.lld)
-    # llvmPkgs.llvm
-    # llvmPkgs.lldb
-    # # # llvmPkgs.libclc
-    # llvmPkgs.libclang
-    # llvmPkgs.libllvm
-    # llvmPkgs.libcxx
-    # (hiPrio llvmPkgs.libstdcxxClang)
-
+    ## Buf
+    buf
     ## Go
     go
+    go-task
+    goreman
     goreleaser
     golangci-lint
     gotools
@@ -147,14 +131,12 @@ in {
     nodePackages.prettier
 
     # Writing
-    texlive.combined.scheme-full
     pandoc
 
     # MultiMedia
     bitwarden # Password manager
     bitwarden-cli
     signal-desktop # Messaging app
-    slack # Messaging app
     transmission-gtk
     ffmpeg # Movie converter
     vlc # Movie player
@@ -166,19 +148,9 @@ in {
     ghostscript
     imagemagick_light # Converter tools
     ymuse # Sound player
-    zoom-us # Video calls
-    deluge # Bittorrent client
     firefox
+    spotify
     google-chrome
-    thunderbird
-    libreoffice
-
-    ## Sonos Device
-    noson
-    (mkchromecast.override {enableSonos = true;})
-
-    # VPN
-    wgnord
 
     # Dictionaries
     aspell

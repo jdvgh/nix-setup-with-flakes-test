@@ -23,7 +23,7 @@ in {
     ./boot.nix
 
     # Include all other specifications.
-    (outputs.nixosModules.windowing {inherit config pkgs pkgsStable;})
+    (outputs.nixosModules.windowing {inherit inputs config pkgs pkgsStable;})
     outputs.nixosModules.display
     outputs.nixosModules.fonts
     outputs.nixosModules.time
@@ -39,7 +39,7 @@ in {
     outputs.nixosModules.virtualization
 
     (outputs.nixosModules.packages {inherit config pkgs pkgsStable;})
-    outputs.nixosModules.programs
+    outputs.nixosModules.programs 
 
     (outputs.nixosModules.user {inherit config pkgs;})
 

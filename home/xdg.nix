@@ -28,7 +28,6 @@
     "audio/*" = ["vlc.desktop"];
     "video/*" = ["vlc.desktop"];
 
-    "text/calendar" = ["thunderbird.desktop"]; # ".ics"  iCalendar format
 
     "application/json" = browser; # ".json"  JSON format
     "application/pdf" = browser ++ ["com.github.jeromerobert.pdfarranger.desktop"];

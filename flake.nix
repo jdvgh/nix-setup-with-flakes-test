@@ -27,16 +27,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Some hardware modules.
-    hardware = {
-      url = "github:NixOS/nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Some custom hardware modules.
     hardwarejdvgh = {
-      url = "github:jdvgh/nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jdvgh/nixos-hardware/feat/lenovo-legion-15-ach6";
     };
     # Home manager
     home-manager = {
@@ -47,12 +40,6 @@
     # Nix-Alien
     nixAlien = {
       url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Neovim nigthtly
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

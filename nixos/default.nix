@@ -56,6 +56,7 @@ with inputs; {
   # The NixOs for the virtual machine.
   vm = nixpkgs.lib.nixosSystem {
     modules = [
+      ./hosts/settings.nix
       ./hosts/vm/configuration.nix
       inputs.home-manager.nixosModules.home-manager
     ];

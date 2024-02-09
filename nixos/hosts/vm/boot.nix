@@ -12,7 +12,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/sda";
+        device = "/dev/vda";
         useOSProber = false; # Do not detect other operating systems.
         # efiSupport = true;
         # enableCryptodisk = true;

@@ -41,24 +41,67 @@
     tree
     file
     fzf
+    lsof
 
     wget
     curl
-    openvpn
+
+    neovim
+
+    dmenu
+    gnome.gnome-control-center
+    gnome.gnome-tweaks
+
 
     btop
+    dig
+    dracula-theme
+    font-manager
+    gnome.gdm
+    gnome.gnome-session
+    gnome3.adwaita-icon-theme  # default gnome cursors
+    gnumake
+    grim # screenshot functionality
+    hyprpaper
+    gettext
+    glib
     killall
     ripgrep
+    yarn
+    yarn2nix
+    pavucontrol
+    pinentry
+    pinentry-curses
+    slurp # screenshot functionality
+    git-lfs
+    power-profiles-daemon
+    powertop
+    htop
+    wdisplays # tool to configure displays
+    wget
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    xdg-utils # for opening default programs when clicking links
+    qt5.qtwayland
+    qt6.qmake
+    qt6.qtwayland
 
     zsh
+    tmux
     bash
 
+    wofi
+    zk
+
+    gitFull
+    lazygit
     # Virtualisation
     docker
     docker-compose
+    krew
+    kubecm
     kubectl
-    kind # Simple kubernetes for local development.
     k9s # Kubernetes management CLI tool
+    kubernetes-helm
 
     # Other virtualisation stuff.
     # libguestfs # Needed to virt-sparsify qcow2 files
